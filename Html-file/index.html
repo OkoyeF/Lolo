@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Love ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Floating Hearts Background */
+        .hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            opacity: 0.6;
+            font-size: 20px;
+            color: #ff6b6b;
+            animation: float 10s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Name Input Page */
+        .name-page {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            z-index: 1;
+            max-width: 500px;
+            width: 90%;
+            animation: fadeIn 1s ease;
+        }
+
+        .name-page h1 {
+            font-family: 'Dancing Script', cursive;
+            color: #ff6b6b;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .name-page p {
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .name-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ffccd5;
+            border-radius: 8px;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            outline: none;
+            transition: border 0.3s;
+        }
+
+        .name-input:focus {
+            border-color: #ff6b6b;
+        }
+
+        .submit-btn {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .submit-btn:hover {
+            background: #ff4757;
+            transform: scale(1.05);
+        }
+
+        /* Message Page */
+        .message-page {
+            display: none;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            z-index: 1;
+            max-width: 600px;
+            width: 90%;
+            animation: fadeIn 1s ease;
+        }
+
+        .message-page h1 {
+            font-family: 'Dancing Script', cursive;
+            color: #ff6b6b;
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .message-page p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        /* Your Image Styling */
+        .love-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #ff6b6b;
+            margin: 20px auto;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: block;
+            animation: pulse 2s infinite;
+        }
+
+        .highlight {
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            margin-top: 30px;
+            color: #ff6b6b;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .name-page, .message-page {
+                padding: 30px 20px;
+            }
+            .name-page h1, .message-page h1 {
+                font-size: 2rem;
+            }
+            .love-photo {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Hearts Background -->
+    <div class="hearts" id="hearts"></div>
+
+    <!-- Name Input Page -->
+    <div class="name-page" id="namePage">
+        <h1>My Dearest Love ❤️</h1>
+        <p>Please enter your name so I can share something special with you...</p>
+        <input type="text" class="name-input" id="nameInput" placeholder="Your name..." required>
+        <button class="submit-btn" id="submitBtn">Continue</button>
+    </div>
+
+    <!-- Message Page (Hidden Initially) -->
+    <div class="message-page" id="messagePage">
+        <h1>To My Beautiful <span class="highlight" id="userName"></span> ❤️</h1>
+        
+        <!-- YOUR IMAGE EMBEDDED HERE -->
+        <img class="love-photo" src="https://i.imgur.com/HXeA2Zy.jpeg" alt="For Lolo">
+        
+        <p>I love you more than words can express, and I'm truly sorry for everything that made you feel distant or cold towards me.</p>
+        <p>You are the most precious person in my life, and I regret every moment that caused you pain.</p>
+        <p>My heart belongs to you, and I promise to cherish you with all the love and warmth you deserve.</p>
+        <p>Please give me a chance to make things right, because life without you is incomplete.</p>
+        <p>Forever yours,</p>
+        <div class="signature">Your Chief</div>
+    </div>
+
+    <script>
+        // Create floating hearts
+        const heartsContainer = document.getElementById('hearts');
+        for (let i = 0; i < 30; i++) {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = Math.random() * 100 + 'vh';
+            heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            heart.style.animationDuration = (Math.random() * 10 + 5) + 's';
+            heartsContainer.appendChild(heart);
+        }
+
+        // Handle name submission
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            const name = document.getElementById('nameInput').value.trim();
+            if (name) {
+                document.getElementById('userName').textContent = name;
+                document.getElementById('namePage').style.display = 'none';
+                document.getElementById('messagePage').style.display = 'block';
+            } else {
+                alert('Please enter your name, my love.');
+            }
+        });
+
+        // Allow pressing Enter to submit
+        document.getElementById('nameInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.getElementById('submitBtn').click();
+            }
+        });
+    </script>
+</body>
+</html>
